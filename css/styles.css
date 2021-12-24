@@ -1,0 +1,122 @@
+:root {
+    --Main-color: #FCF7F5;
+    --Main-background-color: #506269;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: var(--Main-color);
+    padding: 0 .8rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.lg-screen {
+    display: none;
+}
+
+@media (min-width: 430px) {
+    .sm-screen {
+        display: none;
+    }
+
+    .lg-screen {
+        display: inherit;
+    }
+}
+
+header {
+    background: var(--Main-color);
+    width: 100%;
+    height: 6%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* position: absolute; */
+}
+
+header object {
+    padding: 5%;
+}
+
+main {
+    background: var(--Main-background-color);
+    /* height: 100vh; */
+}
+
+.introduction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--Main-color);
+}
+
+.whoami {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.explorer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.services {
+    background: var(--Main-color);
+}
+
+.services img {
+    width: 100px;
+}
+
+@media (min-width: 430px) {
+    .service-items{
+        display: grid;
+        grid-template-rows: 200px;
+        grid-template-columns: 200px;
+    }
+}
+
+figcaption {
+    font-size: 1rem;
+}
+
+.blog {
+    background-color: antiquewhite;
+    height: 100%;
+}
+
+footer {
+    background: #262220;
+    height: 50px;
+    color: var(--Main-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .social {
+    position: relative;
+}
+
+footer object {
+    width: 25px;
+}
+
+
