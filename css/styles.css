@@ -122,19 +122,15 @@ footer object {
 
 /* About Me Page styles */
 
-main {
-    background: var(--Main-color);
-    display: flex;
-    flex-direction: column;
-}
-
 .bio {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    background: var(--Main-color);
 }
 
 .bio img {
+    display: inline-flex;
+    justify-content: center;
     width: 150px;
     border: 5px solid var(--Main-background-color);
     border-radius: 50%;
