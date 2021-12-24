@@ -27,7 +27,7 @@ body {
     display: none;
 }
 
-@media (min-width: 430px) {
+@media (min-width: 1024px) {
     .sm-screen {
         display: none;
     }
@@ -86,7 +86,7 @@ main {
     width: 100px;
 }
 
-@media (min-width: 430px) {
+@media (min-width: 1024px) {
     .service-items{
         display: grid;
         grid-template-rows: 200px;
@@ -120,3 +120,22 @@ footer object {
 }
 
 
+/* About Me Page styles */
+
+main {
+    background: var(--Main-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.bio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bio img {
+    width: 150px;
+    border: 5px solid var(--Main-background-color);
+    border-radius: 50%;
+}
