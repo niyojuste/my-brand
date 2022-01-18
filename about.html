@@ -5,61 +5,31 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="css/styles.css" />
+		<script src="components/header.js" type="text/javascript"></script>
+		<script src="components/footer.js" type="text/javascript"></script>
 		<title>About me</title>
 	</head>
 	<body>
-		<div class="container">
-			<header class="sm-screen">
-				<a href="/">JN</a>
-				<object
-					data="img/menu_lines_hamburger_icon.svg"
-					type="image/svg+xml"
-				>
-					Your browser doesn't support svg
-				</object>
-			</header>
-			<header class="lg-screen">
-				<a href="/">Juste Niyonteze</a>
-				<nav>
-					<a href="/">Home</a>
-					<a href="#">Services</a>
-					<a href="/about">About me</a>
-					<a href="/blog">Blog</a>
-					<a href="#">Contact me</a>
-				</nav>
-			</header>
+			<header-component></header-component>
 			<main>
-				<section class="bio">
-					<img src="img/profile.jpg" alt="My-face.jpg" />
-					<div class="my-story">
-						<h2>My story</h2>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit.
-							Porro, ex delectus quam unde amet soluta consectetur magnam
-							possimus, culpa ut voluptatem, quidem iusto vero!
-							Laboriosam officiis consequatur tempore itaque laborum.
-						</p>
-					</div>
-                    <div class="address">
-                        <h2>Address</h2>
-                        <p>Kigali, Rwanda</p>
-                        <div>
-                            <p>+250 782 364 151</p>
-                        </div>
-                    </div>
+				<img src="img/profile.jpg" alt="My-face.jpg" />				
+				<section class="my-story">
+					<h2>My story</h2>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Porro, ex delectus quam unde amet soluta consectetur magnam
+						possimus, culpa ut voluptatem, quidem iusto vero!
+						Laboriosam officiis consequatur tempore itaque laborum.
+					</p>
 				</section>
+                <address class="address">
+                    <h2>Address</h2>
+                    <p>Kigali, Rwanda</p>
+                    <div>
+                        <p>+250 782 364 151</p>
+                    </div>
+                </address>
 			</main>
-            <footer>
-                <p>Juste Niyonteze &copy;2021</p>
-                <div class="social">
-                    <object data="img/github__icon.svg" type="image/svg+xml">
-                        Your browser doesn't support svg
-                    </object>
-                    <object data="img/twitter_bird_icon.svg" type="image/svg+xml">
-                        Your browser doesn't support svg
-                    </object>
-                </div>
-            </footer>
-		</div>
+            <footer-component></footer-component>
 	</body>
 </html>

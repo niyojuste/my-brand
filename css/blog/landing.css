@@ -1,0 +1,53 @@
+/* Blog Pages styles */
+/* .blog-landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+/* article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.post {
+    /* width: 70%; */
+    text-align: justify;
+}
+
+.post a {
+    color: #262220;
+    text-decoration: none;
+}
+
+
+.reactions {
+    width: 11vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reactions div {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile {
+    display: inline-flex;
+}
+
+.profile p {
+    margin-top: 0;
+    padding-right: 1rem;
+}
+
+.comment .reactions {
+    width: 5vw;
+    padding-top: 0;
+}
+
+.comment .text {
+    margin: unset;
+}
