@@ -3,12 +3,14 @@ let arr = localStorage.getItem('users')
 	: []
 
 function login() {
-    const username = document.querySelector("[name='name'")
+	const username = document.querySelector("[name='username'").value
+	const password = document.querySelector("[name='password'").value
 
-    const user = arr.find((user) => user.username === username)
+	console.log('user')
+	const user = arr.find((user) => user.username === username)
 
-    if(user) {
-        sessionStorage.setItem('user', JSON.stringify(user))
-        history.back()
-    }
+	if (user && user.password.match(password)) {
+		localStorage.setItem('user', JSON.stringify(user))
+	}
 }
+
