@@ -89,24 +89,23 @@ class Header extends HTMLElement {
 	constructor() {
 		super()
 
-        const shadowRoot = this.attachShadow({ mode: 'open' })
-        shadowRoot.appendChild(headerTemplate.content)
+		const shadowRoot = this.attachShadow({ mode: 'open' })
+		shadowRoot.appendChild(headerTemplate.content)
 	}
-        
-    attributeChangedCallback(name, oldValue, newValue) {
-        openMenu(this)
+
+	attributeChangedCallback(name, oldValue, newValue) {
+		openMenu(this)
 	}
 }
 
 customElements.define('header-component', Header)
 
 function openMenu(elem) {
-    const shadow = elem.shadowRoot
-    document.querySelector('.menuBtn').addEventListener('click', function () {
-        document.getElementById('menu').style.width = '40vw'
-    })
+	const shadow = elem.shadowRoot
+	document.querySelector('.menuBtn').addEventListener('click', function () {
+		document.getElementById('menu').style.width = '40vw'
+	})
 }
-
 
 // document.createElement('header-component')
 
