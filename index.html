@@ -1,91 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css" >
-    <title>Juste's Website</title>
-</head>
-<body>
-    <div class="container about">
-        <header class="sm-screen">
-            <a href="/">JN</a>
-            <object data="img/menu_lines_hamburger_icon.svg" type="image/svg+xml">
-                Your browser doesn't support svg
-            </object>
-        </header>
-        <header class="lg-screen">
-            <a href="/">Juste Niyonteze</a>
-            <nav>
-                <a href="/">Home</a>
-                <a href="#">Services</a>
-                <a href="/my-brand/about.html">About me</a>
-                <a href="/blog">Blog</a>
-                <a href="#">Contact me</a>
-            </nav>
-        </header>
-        <main>
-            <section class="introduction">
-                <div class="whoami">
-                    <p>Hi, I am Juste Niyonteze</p>
-                    <p>I design and develop websites</p>
-                </div>
-                <span>
-                    <img href="#" alt="At work">
-                </span>
-                <div class="explorer">
-                    <p>Take a look at mine</p>
-                    <button>or Reach out</button>
-                </div>
-            </section>
-            <section class="services">
-                <h1>What can I do for you?</h1>
-                <p>Glad you asked.</p>
-                <div class="service-items">
-                    <figure>
-                        <figcaption>UI/UX Design</figcaption>
-                        <img src="img/ux-design.png" alt="">
-                    </figure>
-                    <figure>
-                        <figcaption>Frontend development</figcaption>
-                        <img src="img/coding.png" alt="">
-                    </figure>
-                    <figure>
-                        <figcaption>Backend development</figcaption>
-                        <img src="img/computer.png" alt="">
-                    </figure>
-                    <figure>
-                        <figcaption>App development</figcaption>
-                        <img src="img/app-development.png" alt="">
-                    </figure>
-                </div>
-            </section>
-            <section class="blog">
-                <h1>Want to hang out instead?</h1>
-                <p>Check out my <a href="/blog">Blog</a></p>
-            </section>
-            <section class="contact">
-                <div class="info"></div>
-                <form>
-                    <input type="text" placeholder="Your name">
-                    <input type="email" placeholder="Your email">
-                    <input type="tel" placeholder="Your tel">
-                    <input type="text" placeholder="Your text">
-                </form>
-            </section>
-        </main>
-        <footer>
-            <p>Juste I. Niyonteze &copy;2021</p>
-            <div class="social">
-                <object data="img/github__icon.svg" type="image/svg+xml">
-                    Your browser doesn't support svg
-                </object>
-                <object data="img/twitter_bird_icon.svg" type="image/svg+xml">
-                    Your browser doesn't support svg
-                </object>
-            </div>
-        </footer>
-    </div>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/styles.css" />
+		<script src="components/header.js" type="text/javascript" defer></script>
+		<script src="components/footer.js" type="text/javascript" defer></script>
+		<title>Juste's Website</title>
+	</head>
+	<body>
+		<header-component></header-component>
+		<main>
+			<section class="introduction">
+				<div class="whoami">
+					<h2>Hi, I am Juste Niyonteze</h2>
+					<p>I design and develop websites</p>
+				</div>
+                <img href="#" alt="At work" />
+				<div class="explore">
+					<p>Take a look at mine</p>
+					<button>or Reach out</button>
+				</div>
+			</section>
+			<section class="services">
+				<h1>What can I do for you?</h1>
+				<p>Glad you asked.</p>
+				<div class="service-items">
+					<figure>
+						<figcaption>UI/UX Design</figcaption>
+						<img src="img/ux-design.png" alt="" />
+					</figure>
+					<figure>
+						<figcaption>Frontend development</figcaption>
+						<img src="img/coding.png" alt="" />
+					</figure>
+					<figure>
+						<figcaption>Backend development</figcaption>
+						<img src="img/computer.png" alt="" />
+					</figure>
+					<figure>
+						<figcaption>App development</figcaption>
+						<img src="img/app-development.png" alt="" />
+					</figure>
+				</div>
+			</section>
+			<section class="blog">
+				<h1>Want to hang out instead?</h1>
+				<p>Check out my <a href="/blog">Blog</a></p>
+			</section>
+			<section class="contact">
+				<div class="empty"></div>
+				<div class="info"></div>
+				<div class="contact-me">
+					<form>
+						<input type="text" placeholder="Your name" />
+						<input type="email" class="short" placeholder="Your email" />
+						<input type="tel" class="short" placeholder="Your tel" />
+						<input type="textarea" placeholder="Your text" />
+						<button>Submit</button>
+					</form>
+				</div>
+			</section>
+		</main>
+		<footer-component></footer-component>
+	</body>
 </html>

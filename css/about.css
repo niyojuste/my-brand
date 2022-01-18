@@ -1,0 +1,33 @@
+/* About Me Page styles */
+
+.bio {
+    display: flex;
+    flex-direction: column;
+    background: var(--Main-color);
+    width: 80%;
+}
+
+img {
+    position: relative;
+    padding: initial;
+    width: 20vw;
+    left: 40vw;
+    border: 5px solid var(--Main-background-color);
+    border-radius: 50%;
+}
+
+.my-story {
+    text-align: justify;
+}
+
+
+@media (min-width: 1024px) {
+    img, address {
+        float: right;
+        left: initial;
+    }
+
+    .my-story {
+        width: 60vw;
+    }
+}
