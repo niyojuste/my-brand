@@ -10,7 +10,7 @@ function login() {
 	const user = arr.find((user) => user.username === username)
 
 	if (user && user.password.match(password)) {
-		localStorage.setItem('user', JSON.stringify(user))
+		localStorage.setItem('active', JSON.stringify(user))
 	}
 }
 
