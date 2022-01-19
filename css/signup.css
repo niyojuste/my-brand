@@ -40,7 +40,7 @@ form input, button{
 }
 
 button {
-    width: 6rem;
+    width: auto;
     background-color: var(--whiteish);
     color: var(--blueish);
 }
