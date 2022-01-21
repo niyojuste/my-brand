@@ -37,6 +37,7 @@ img {
 
 input, textarea {
     background-color: inherit;
+    color: white;
     border: 2px solid;
     border-radius: 10px;
     width: 100%;
@@ -44,6 +45,8 @@ input, textarea {
     padding: .6rem .4rem;
     font-size: inherit;
 }
+
+
 
 button {
     border-radius: 10px;
@@ -183,10 +186,14 @@ figcaption {
     width: 49.5%;
 }
 
-.contact input, .contact button {
+.contact input, .contact button, .contact textarea {
     border-color: var(--main-background-color);
+    color: white;
 }
 
+.contact textarea {
+    height: 30vh;
+}
 
 
 .reactions {
@@ -212,6 +219,7 @@ figcaption {
     background-color: whitesmoke;
     min-height: 15vh;
     overflow-y: visible;
+    color: black;
 }
 
 .profile {
