@@ -4,31 +4,40 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" type="text/css" href="../css/styles.css" />
-		<script src="/components/header.js" type="text/javascript"></script>
-		<script src="/components/footer.js" type="text/javascript"></script>
-		<script src="../js/blog/article.js" type="text/javascript" defer></script>
+		<link rel="stylesheet" type="text/css" href="/my-brand/css/styles.css" />
+		<script src="/my-brand/components/header.js" type="text/javascript"></script>
+		<script src="/my-brand/components/footer.js" type="text/javascript"></script>
+		<script
+			src="/my-brand/js/blog/article.js"
+			type="text/javascript"
+			defer
+		></script>
 		<title>Document</title>
 	</head>
 	<body>
 		<header class="lg-screen">
-			<a href="/">Juste Niyonteze</a>
+			<a href="/my-brand/">Juste Niyonteze</a>
 			<nav>
-				
 				<a href="landing.html">Home</a>
-				<a href="/login/login.html"><button>Login</button></a>
+				<a href="/my-brand/login/login.html"><button>Login</button></a>
 			</nav>
 		</header>
 		<main>
 			<article>
-				<h1 id='title'></h1>
-				<p id='body'></p>
+				<h1 id="title"></h1>
+				<p id="body"></p>
 				<div class="reactions">
-					<object data="../assets/img/like_rating_up_icon.svg" type="image/svg+xml">
+					<object
+						data="/my-brand/assets/img/like_rating_up_icon.svg"
+						type="image/svg+xml"
+					>
 						Your browser doesn't support SVG
 					</object>
 					<p id="likes"></p>
-					<object data="../assets/img/comment_icon.svg" type="image/svg+xml">
+					<object
+						data="/my-brand/assets/img/comment_icon.svg"
+						type="image/svg+xml"
+					>
 						Your browser doesn't support SVG
 					</object>
 					<p id="comments"></p>
@@ -36,8 +45,8 @@
 			</article>
 			<section class="comments">
 				<h2>Comments</h2>
-				
-				<form action="#" onsubmit="addComment()">
+
+				<form onsubmit="addComment()">
 					<textarea name="comment" placeholder="Your comment"></textarea>
 					<button>Submit</button>
 				</form>

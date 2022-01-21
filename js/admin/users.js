@@ -4,7 +4,7 @@ const totalUsers = document.createElement('h3')
 totalUsers.appendChild(document.createTextNode(users.length))
 
 const usersDisplay = document.getElementById('users')
-usersDisplay.appendChild(totalusers)
+usersDisplay.appendChild(totalUsers)
 
 users.forEach((user) => {
 

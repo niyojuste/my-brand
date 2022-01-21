@@ -10,11 +10,10 @@ const active = localStorage.getItem('active')
 if (active) {
 	// const user = JSON.parse(active)
 	const login = document.querySelector('button')
-	login.innnerHTML = ''
-	login.appendChild(document.createTextNode('Logout'))
+	login.textContent = "logout"
 	login.addEventListener('click', function () {
 		localStorage.removeItem('active')
-		location.href = '/'
+		location.href = '/my-brand/'
 	})
 }
 
@@ -47,10 +46,10 @@ post.comments.forEach((comment) => {
 
 function addComment() {
 	if (!localStorage.getItem('active')) {
-		location.href = '../../login/login.html'
+		location.href = '/my-brand/login/login.html'
 	} else {
 		post.comments = post.comments.push(textarea.value)
-    	const index = posts.findIndex((element) => element.id.match(post.id))
+		const index = posts.findIndex((element) => element.id.match(post.id))
 
 		posts[index] = post
 		localStorage.setItem('posts', JSON.stringify(posts))
@@ -58,19 +57,19 @@ function addComment() {
 	}
 }
 
-// // function Comment() {
+// function Comment() {
 
 //     const likeIcon = document.createElement('object')
-//     likeIcon.data = '../../img/like_rating_up_icon.svg'
+//     likeIcon.data = '/my-brand/img/like_rating_up_icon.svg'
 //     likeIcon.type = 'image/svg+xml'
 
 //     const likes = document.createElement('p')
 //     likes.appendChild(document.createTextNode(post.likes.length))
 //     likes.style.marginTop = '0'
 
-//     // const commentIcon = document.createElement('object')
-//     // commentIcon.data = '../../img/comment_icon.svg'
-//     // commentIcon.type = 'image/svg+xml'
+		// const commentIcon = document.createElement('object')
+		// commentIcon.data = '/my-brand/img/comment_icon.svg'
+		// commentIcon.type = 'image/svg+xml'
 
 //     // const comments = document.createElement('p')
 //     // comments.appendChild(document.createTextNode(post.comments.length))
@@ -80,7 +79,7 @@ function addComment() {
 //     likesDiv.className = 'likes'
 //     likesDiv.appendChild(likeIcon)
 //     likesDiv.appendChild(likes)
-//     // likesDiv.style.width = '7.5vh'
+    // likesDiv.style.width = '7.5vh'
 
 //     // reactionsDiv.appendChild(commentIcon)
 //     // reactionsDiv.appendChild(comments)

@@ -60,14 +60,14 @@ headerTemplate.innerHTML = `
                 &times;
             </a>
             
-            <a href="/">Home</a>
+            <a href="/my-brand">Home</a>
             <a href="#">Services</a>
-            <a href="/about.html">About me</a>
-            <a href="/blog/landing.html">Blog</a>
+            <a href="/my-brand/about.html">About me</a>
+            <a href="/my-brand/blog/landing.html">Blog</a>
             <a href="#">Contact me</a>
             
         </nav>
-        <a href="/">JN</a>
+        <a href="/my-brand">JN</a>
         <span 
             class="menuBtn"
         >
@@ -75,13 +75,13 @@ headerTemplate.innerHTML = `
         </span>
     </header>
     <header class="lg-screen">
-        <a href="/">Juste Niyonteze</a>
+        <a href="/my-brand/">Juste Niyonteze</a>
         <nav>
             
-            <a href="/">Home</a>
+            <a href="/my-brand/">Home</a>
             <a href="#">Services</a>
-            <a href="/about.html">About me</a>
-            <a href="/blog/landing.html">Blog</a>
+            <a href="/my-brand/about.html">About me</a>
+            <a href="/my-brand/blog/landing.html">Blog</a>
             <a href="#">Contact me</a>
             
         </nav>

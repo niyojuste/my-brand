@@ -8,7 +8,7 @@ if (!post) {
 }
 
 const body = document.createElement('p')
-body.appendChild(document.createTextNode(post.body))
+body.appendChild(document.createTextNode(post.body.replaceAll("\n", "")))
 
 const content = document.getElementById('post')
 content.appendChild(title)

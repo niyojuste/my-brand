@@ -52,11 +52,11 @@ headerTemplate.innerHTML = `
     </style>
 
     <header class="lg-screen">
-        <a href="/">Juste Niyonteze</a>
+        <a href="/my-brand/">Juste Niyonteze</a>
         <nav>
             
-            <a href="/">Home</a>
-            <a href="/login/login.html">Home</a>
+            <a href="/my-brand/">Home</a>
+            <a href="/my-brand/login/login.html">Home</a>
         </nav>
     </header>
 `

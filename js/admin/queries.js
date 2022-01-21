@@ -12,7 +12,7 @@ queries.forEach((query) => {
     date.appendChild(document.createTextNode(query.date))
 
     const user = document.createElement('td')
-    user.appendChild(document.createTextNode(query.user))
+    user.appendChild(document.createTextNode(query.user.email))
 
     const content = document.createElement('td')
     content.appendChild(document.createTextNode(query.query))
