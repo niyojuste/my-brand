@@ -1,0 +1,15 @@
+@import url("../layout.css");
+
+.articles {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.numbers .card {
+    width: 21vw;
+}
+
+.card {
+    width: 15vw;
+}

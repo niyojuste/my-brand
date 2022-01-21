@@ -4,13 +4,21 @@
 
 }
 
+@font-face {
+    font-family: 'Rubik';
+    src: url('/assets/fonts/Rubik-VariableFont_wght.ttf');
+    font-size: normal;
+    font-weight: normal;
+    font-display: fallback;
+}
+
 html,
 body {
     width: 100vw;
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.1rem;
 }
 
@@ -27,7 +35,7 @@ img {
     width: 10vw;
 }
 
-input {
+input, textarea {
     background-color: inherit;
     border: 2px solid;
     border-radius: 10px;
@@ -35,11 +43,6 @@ input {
     margin-bottom: 1.5rem;
     padding: .6rem .4rem;
     font-size: inherit;
-}
-
-input[type=textarea] {
-    height: 7rem;
-    text-align: left;
 }
 
 button {
@@ -69,11 +72,50 @@ main {
 }
 
 main > * {
-    padding: 0 4rem;
+    padding: 0 7.5vw;
 }
 
 article {
     text-align: justify;
+}
+
+header {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    padding: 0 2.5vw;
+    width: 100vw;
+    height: 10vh;
+    background-color: var(--main-background-color);
+    box-shadow: 0 .2rem 20px -20px var(--alternate-background-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header button {
+    width: 12rem;
+    background-color: inherit;
+    color: var(--alternate-background-color);
+    border: 2px solid var(--alternate-background-color);
+    transition: .3s;
+}
+
+header button:hover {
+    background-color: var(--alternate-background-color);
+    color: var(--main-background-color);
+    transition: .5s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    padding: 0 .5rem;
+}
+
+.sm-screen {
+    display: none;
 }
 
 .introduction, .contact {
@@ -148,7 +190,7 @@ figcaption {
 
 
 .reactions {
-    width: 40vw;
+    width: 15vw;
     display: flex;
     justify-content: flex-start;
 }
@@ -158,12 +200,18 @@ figcaption {
 }
 
 .reactions object {
-    padding: .5rem .4rem 1rem 0;
+    margin-top: .18rem;
+    height: 1rem;
 }
 
-.comment .reactions {
-    width: 20vw;
-    height: 3rem;
+.reactions p {
+    margin-top: 0;
+}
+
+.comments textarea {
+    background-color: whitesmoke;
+    min-height: 15vh;
+    overflow-y: visible;
 }
 
 .profile {

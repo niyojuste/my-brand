@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../../css/admin/articles/article.css" />
+		<script src="../../components/admin/navbar.js" defer></script>
+		<script src="../../components/admin/header.js" defer></script>
+		<script src="../../components/admin/footer.js" defer></script>
+        <script src="../../js/admin/articles/article.js" defer></script>
+		<title>No Article</title>
+	</head>
+	<body>
+		<nav-component></nav-component>
+		<header-component></header-component>
+		<main>
+        <a href="index.html"><button>Go back</button></a>
+
+			<section>
+				<div id="post"></div>
+				<div id="reactions"></div>
+				<div id="action">
+                    <a href="update.html"><button>Update</button></a>
+                    <button onclick="deletePost()">Delete</button></div>
+			</section>
+		</main>
+		<footer-component></footer-component>
+	</body>
+</html>
