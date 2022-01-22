@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="css/styles.css" />
 		<script src="components/header.js" type="text/javascript"></script>
 		<script src="components/footer.js" type="text/javascript"></script>
+		<script src="js/index.js" defer></script>
 		<title>About me</title>
 	</head>
 	<body>
@@ -56,11 +57,12 @@
 				<div class="empty"></div>
 				<div class="info"></div>
 				<div class="contact-me">
+					<p id="errorMessage"></p>
 					<form>
-						<input type="text" placeholder="Your name" />
-						<input type="email" class="short" placeholder="Your email" />
-						<input type="tel" class="short" placeholder="Your tel" />
-						<input type="textarea" placeholder="Your text" />
+						<input type="text" placeholder="Name" />
+						<input type="text" name="email" class="short" placeholder="Email" />
+						<input type="tel" class="short" placeholder="Tel" />
+						<textarea name="query" placeholder="Your text"></textarea>
 						<button>Submit</button>
 					</form>
 				</div>

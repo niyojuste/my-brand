@@ -43,7 +43,7 @@
 				<img srcset="assets/img/developing.png" alt="At work" />
 				<div class="explore">
 					<p>Take a look at mine</p>
-					<button>or Reach out</button>
+					<a href="#contact"><button>or Reach out</button></a>
 				</div>
 			</section>
 			<section class="services" id="services">
@@ -76,10 +76,11 @@
 				<div class="empty"></div>
 				<div class="info"></div>
 				<div class="contact-me">
-					<form onsubmit="sendQuery()">
-						<input type="text" placeholder="Your name" />
-						<input type="email" class="short" placeholder="Your email" />
-						<input type="tel" class="short" placeholder="Your tel" />
+					<p id="errorMessage"></p>
+					<form>
+						<input type="text" placeholder="Name" />
+						<input type="text" name="email" class="short" placeholder="Email" />
+						<input type="tel" class="short" placeholder="Tel" />
 						<textarea name="query" placeholder="Your text"></textarea>
 						<button>Submit</button>
 					</form>
