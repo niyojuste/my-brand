@@ -51,12 +51,39 @@ headerTemplate.innerHTML = `
                 
     </style>
 
+    <header class="sm-screen">
+        <nav id="menu" class="sideNav">
+            <a 
+                href="javascript:void(0)" 
+                class="closeBtn" 
+            >
+                &times;
+            </a>
+            
+            <a href="/my-brand">Home</a>
+            <a href="#">Services</a>
+            <a href="/my-brand/about.html">About me</a>
+            <a href="/my-brand/blog/landing.html">Blog</a>
+            <a href="#">Contact me</a>
+            
+        </nav>
+        <a href="/my-brand">JN</a>
+        <span 
+            class="menuBtn"
+        >
+            &#9776;
+        </span>
+    </header>
     <header class="lg-screen">
         <a href="/my-brand/">Juste Niyonteze</a>
         <nav>
             
             <a href="/my-brand/">Home</a>
-            <a href="/my-brand/login/login.html">Home</a>
+            <a href="#">Services</a>
+            <a href="/my-brand/about.html">About me</a>
+            <a href="/my-brand/blog/landing.html">Blog</a>
+            <a href="#">Contact me</a>
+            
         </nav>
     </header>
 `

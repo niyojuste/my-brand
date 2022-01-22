@@ -12,5 +12,9 @@ function login() {
 	if (user && user.password.match(password)) {
 		localStorage.setItem('active', JSON.stringify(user))
 	}
+
+	if(user && user.username.match('yusto')) {
+		location.replace('/my-brand/admin/dashboard.html')
+	}
 }
 

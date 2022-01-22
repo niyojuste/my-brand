@@ -10,26 +10,62 @@
 		<title>About me</title>
 	</head>
 	<body>
-			<header-component></header-component>
-			<main>
-				<img src="img/profile.jpg" alt="My-face.jpg" />				
-				<section class="my-story">
-					<h2>My story</h2>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Porro, ex delectus quam unde amet soluta consectetur magnam
-						possimus, culpa ut voluptatem, quidem iusto vero!
-						Laboriosam officiis consequatur tempore itaque laborum.
-					</p>
-				</section>
-                <address class="address">
-                    <h2>Address</h2>
-                    <p>Kigali, Rwanda</p>
-                    <div>
-                        <p>+250 782 364 151</p>
-                    </div>
-                </address>
-			</main>
-            <footer-component></footer-component>
+		<header class="sm-screen">
+			<nav id="menu" class="sideNav">
+				<a href="javascript:void(0)" class="closeBtn"> &times; </a>
+
+				<a href="/my-brand/">Home</a>
+				<a href="#">Portfolio</a>
+				<a href="about.html">About me</a>
+				<a href="blog/landing.html">Blog</a>
+				<a href="#">Contact me</a>
+			</nav>
+			<a href="/my-brand/">JN</a>
+			<span class="menuBtn"> &#9776; </span>
+		</header>
+		<header class="lg-screen">
+			<a href="/my-brand/">Juste Niyonteze</a>
+			<nav>
+				<a href="/my-brand/">Home</a>
+				<a href="#portfolio">Portfolio</a>
+				<a href="about.html">About me</a>
+				<a href="blog/landing.html">Blog</a>
+				<a href="#contact">Contact me</a>
+				<a href="login/login.html">Contact me</a>
+			</nav>
+		</header>
+		<main>
+			<img src="assets/img/profile.jpg" alt="My-face.jpg" />
+			<section class="my-story">
+				<h2>My story</h2>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro,
+					ex delectus quam unde amet soluta consectetur magnam possimus,
+					culpa ut voluptatem, quidem iusto vero! Laboriosam officiis
+					consequatur tempore itaque laborum.
+				</p>
+			</section>
+			<address class="address">
+				<h2>Address</h2>
+				<p>Kigali, Rwanda</p>
+				<div>
+					<p>+250 782 364 151</p>
+				</div>
+			</address>
+			<section class="contact" id="contact">
+				<div class="empty"></div>
+				<div class="info"></div>
+				<div class="contact-me">
+					<form>
+						<input type="text" placeholder="Your name" />
+						<input type="email" class="short" placeholder="Your email" />
+						<input type="tel" class="short" placeholder="Your tel" />
+						<input type="textarea" placeholder="Your text" />
+						<button>Submit</button>
+					</form>
+				</div>
+			</section>
+		</main>
+		<footer-component></footer-component>
 	</body>
 </html>

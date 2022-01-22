@@ -1,0 +1,12 @@
+@import url("layout.css");
+
+table {
+    width: 100%;
+    table-layout: auto;
+}
+
+td {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

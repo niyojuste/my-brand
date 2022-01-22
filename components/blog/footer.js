@@ -25,10 +25,10 @@ footerTemplate.innerHTML = `
     <footer>
         <p>Juste Niyonteze &copy;2022</p>
         <div class="socials">
-            <object data="/my-brand/assets/img/github__icon.svg" type="image/svg+xml">
+            <object data="/img/github__icon.svg" type="image/svg+xml">
                 Your browser doesn't support svg
             </object>
-            <object data="/my-brand/assets/img/twitter_bird_icon.svg" type="image/svg+xml">
+            <object data="/img/twitter_bird_icon.svg" type="image/svg+xml">
                 Your browser doesn't support svg
             </object>
         </div>

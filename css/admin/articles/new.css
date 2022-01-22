@@ -1,0 +1,15 @@
+@import url("../layout.css");
+
+form {
+    width: 100%;
+    background-color: white;
+    padding: 2vh 4vw;
+}
+
+input, textarea {
+    width: 100%;
+}
+
+textarea {
+    height: 50vh;
+}
