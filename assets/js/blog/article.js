@@ -30,8 +30,12 @@ title.appendChild(document.createTextNode(post.title))
 const body = document.getElementById('body')
 body.innerHTML = `${post.body.replaceAll('\n', '<br>')}`
 
+if(post.likes.includes(active)) {
+	likePath.setAttribute('d', likeFill)
+}
+
 const likes = document.getElementById('likesCount')
-likes.appendChild(document.createTextNode(post.likes))
+likes.appendChild(document.createTextNode(post.likes.length))
 
 const comments = document.getElementById('commentsCount')
 comments.appendChild(document.createTextNode(post.comments.length))
@@ -40,9 +44,34 @@ const commentSection = document.querySelector('.comments')
 
 post.comments.forEach((comment) => {
 	const content = document.createElement('p')
-	content.appendChild(document.createTextNode(comment))
+	content.appendChild(document.createTextNode(comment.comment))
+
+	const users = JSON.parse(localStorage.getItem('users'))
+	const user = users.find((element) => element.id.toString() === comment.user)
+	
+	const username = document.createElement('h4')
+	username.textContent = `${user.username}`
+
+	const time = document.createElement('p')
+	const d = new Date(comment.time)
+	time.appendChild(document.createTextNode(`${d.getDate()}  ${new Intl.DateTimeFormat('en-GB', {month: 'short'}).format(d)}`))
+	time.appendChild(document.createTextNode(` ${d.getFullYear() === new Date().getFullYear ? d.getFullYear() : ''}`))
+	time.style = `
+		vertical-align: middle;
+		margin-left: 1rem;
+	`
+	
+	const ownerDiv = document.createElement('div')
+	ownerDiv.appendChild(username)
+	ownerDiv.appendChild(time)
+	ownerDiv.className = 'owner'
+	ownerDiv.style = `
+		display: flex;
+		align-items: center;
+	`
 	
 	const commentDiv = document.createElement('div')
+	commentDiv.appendChild(ownerDiv)
 	commentDiv.appendChild(content)
 	
 	commentSection.appendChild(commentDiv)
@@ -57,7 +86,12 @@ commentForm.addEventListener('submit', function (e) {
 	if (!localStorage.getItem('active')) {
 		location.href = '/my-brand/login/login.html'
 	} else {
-		post.comments.push(textarea.value)
+		const userComment = {
+			"user": active,
+			"time": new Date().getTime(),
+			"comment": textarea.value
+		}
+		post.comments.push(userComment)
 
 		posts[postIndex] = post
 		localStorage.setItem('posts', JSON.stringify(posts))
@@ -65,17 +99,26 @@ commentForm.addEventListener('submit', function (e) {
 	}
 })
 
-const likeObj = document.querySelector(".like")
-
-likeObj.addEventListener('click', function (e) {
+likeSVG.addEventListener('click', function (e) {
 	e.preventDefault()
-	posts[postIndex].likes ++
+
+	if(post.likes.includes(active)) {
+		// const postLikes = posts[postIndex].likes
+		const likeIndex = post.likes.findIndex(like => like === active)
+		posts[postIndex].likes.splice(likeIndex, 1)
+
+		localStorage.setItem('posts', JSON.stringify(posts))
+
+		likes.textContent = posts[postIndex].likes.length
+		likePath.setAttribute('d', likeBlank)
+		return 
+	}
+
+	posts[postIndex].likes.push(active)
+
 	localStorage.setItem('posts', JSON.stringify(posts))
 	
 	likePath.setAttribute('d', likeFill)
-	likes.textContent = posts[postIndex].likes
-	setTimeout(() => {
-		likePath.setAttribute('d', likeBlank)
-	}, 500)
+	likes.textContent = posts[postIndex].likes.length
 })
 
