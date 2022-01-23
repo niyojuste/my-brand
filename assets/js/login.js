@@ -22,8 +22,8 @@ form.addEventListener('submit', function (event) {
 		return form.prepend(errorMessage)
 	}
 
-	const username = document.querySelector("[name='username'").value
-	const password = document.querySelector("[name='password'").value
+	const username = document.querySelector("[name='username']").value
+	const password = document.querySelector("[name='password']").value
 
 	const user = arr.find((user) => user.username === username)
 	
@@ -37,11 +37,11 @@ form.addEventListener('submit', function (event) {
 		return form.prepend(errorMessage)
 	}
 	
+	localStorage.setItem('active', JSON.stringify(user))
+	
 	if(user && user.username.match('Yusto')) {
 		return location.href = '/my-brand/admin/dashboard.html'
 	}
-	
-	localStorage.setItem('active', JSON.stringify(user))
 	
 	return location.href = '/my-brand/'
 

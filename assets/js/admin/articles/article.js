@@ -8,14 +8,14 @@ if (!post) {
 }
 
 const body = document.createElement('p')
-body.appendChild(document.createTextNode(post.body.replaceAll("\n", "")))
+body.appendChild(document.createTextNode(post.body.replaceAll('\n', '')))
 
 const content = document.getElementById('post')
 content.appendChild(title)
 content.appendChild(body)
 
 const likes = document.createElement('h3')
-likes.appendChild(document.createTextNode(post.likes.length))
+likes.appendChild(document.createTextNode(post.likes))
 
 const comments = document.createElement('h3')
 comments.appendChild(document.createTextNode(post.comments.length))
@@ -40,7 +40,7 @@ function deletePost() {
 	message.appendChild(document.createTextNode('Deleted'))
 
 	const section = document.querySelector('section')
-    section.className = 'card'
+	section.className = 'card'
 	section.innerHTML = ''
 	section.appendChild(message)
 	section.appendChild(back)

@@ -215,7 +215,7 @@ figcaption {
     margin-top: 0;
 }
 
-.comments textarea {
+.comment-section textarea {
     background-color: whitesmoke;
     min-height: 15vh;
     overflow-y: visible;
