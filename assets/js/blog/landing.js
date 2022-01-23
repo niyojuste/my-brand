@@ -9,7 +9,7 @@ const active = localStorage.getItem('active')
 
 if (active) {
 	const login = document.querySelector('button')
-	login.textContent = "logout"
+	login.textContent = 'logout'
 	login.addEventListener('click', function () {
 		localStorage.removeItem('active')
 		location.href = '/my-brand/'
@@ -41,7 +41,7 @@ posts.forEach((post) => {
 	likeIcon.type = 'image/svg+xml'
 
 	const likes = document.createElement('p')
-	likes.appendChild(document.createTextNode(post.likes.length))
+	likes.appendChild(document.createTextNode(post.likes))
 	likes.style.marginTop = '0'
 
 	const commentIcon = document.createElement('object')
