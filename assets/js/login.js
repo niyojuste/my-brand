@@ -37,7 +37,7 @@ form.addEventListener('submit', function (event) {
 		return form.prepend(errorMessage)
 	}
 	
-	localStorage.setItem('active', JSON.stringify(user))
+	localStorage.setItem('active', user.id)
 	
 	if(user && user.username.match('Yusto')) {
 		return location.href = '/my-brand/admin/dashboard.html'

@@ -10,7 +10,9 @@ const oldBody = document.querySelector("[name='body']")
 oldTitle.value = post.title
 oldBody.value = post.body
 
-function updatePost() {
+const form = document.querySelector('form')
+
+form.addEventListener('submit', function updatePost() {
     const title = oldTitle.value
     const body = oldBody.value
     const time = new Date().getTime()
@@ -38,4 +40,4 @@ function updatePost() {
 	// section.innerHTML = ''
 	// section.appendChild(message)
 	// section.appendChild(back)
-}
+})

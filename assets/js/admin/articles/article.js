@@ -8,14 +8,14 @@ if (!post) {
 }
 
 const body = document.createElement('p')
-body.appendChild(document.createTextNode(post.body.replaceAll('\n', '')))
+body.innerHTML = `${post.body.replaceAll('\n', '<br>')}`
 
 const content = document.getElementById('post')
 content.appendChild(title)
 content.appendChild(body)
 
 const likes = document.createElement('h3')
-likes.appendChild(document.createTextNode(post.likes))
+likes.appendChild(document.createTextNode(post.likes.length))
 
 const comments = document.createElement('h3')
 comments.appendChild(document.createTextNode(post.comments.length))

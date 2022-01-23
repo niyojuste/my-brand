@@ -222,6 +222,14 @@ figcaption {
     color: black;
 }
 
+.owner > * {
+    margin-bottom: .4rem;
+}
+
+.owner+p {
+    margin-top: .5rem;
+}
+
 .profile {
     width: 35vw;
     display: flex;

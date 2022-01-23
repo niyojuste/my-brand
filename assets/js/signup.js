@@ -22,6 +22,7 @@ form.addEventListener('submit', function (e) {
 		return form.prepend(errorMessage)
 	}	
 
+	const id = new Date().getTime().toString()
 	const name = document.querySelector("[name='name']").value
 	const username = document.querySelector("[name='username']").value
 	const password = document.querySelector("[name='password']").value
@@ -64,6 +65,7 @@ form.addEventListener('submit', function (e) {
 	}
 
 	const user = {
+		id,
 		name: name.trim(),
 		username: username.trim(),
 		password,

@@ -10,7 +10,7 @@ postsCard.prepend(totalPosts)
 
 const totalLikes = document.createElement('h3')
 let likesCount = 0
-posts.forEach((post) => (likesCount += post.likes))
+posts.forEach((post) => (likesCount += post.likes.length))
 totalLikes.appendChild(document.createTextNode(likesCount))
 
 const likesCard = document.getElementById('likes')
