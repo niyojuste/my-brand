@@ -1,6 +1,18 @@
+@font-face {
+    font-family: 'Rubik';
+    src: url('../assets/fonts/Rubik-VariableFont_wght.ttf');
+    font-weight: normal;
+    font-size: normal;
+    font-display: fallback;
+}
+
 :root {
     --whiteish: #FCF7F5;
     --blueish: #3D4C52;
+}    
+
+* {
+    font-family: 'Rubik';
 }
 
 body {
