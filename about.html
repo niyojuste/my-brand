@@ -5,36 +5,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="assets/css/styles.css" />
-		<script src="assets/components/header.js" type="text/javascript"></script>
-		<script src="assets/components/footer.js" type="text/javascript"></script>
+		<script src="assets/components/header.js" type="text/javascript" defer></script>
+		<script src="assets/components/footer.js" type="text/javascript" defer></script>
 		<script src="assets/js/index.js" defer></script>
 		<title>About me</title>
 	</head>
 	<body>
-		<header class="sm-screen">
-			<nav id="menu" class="sideNav">
-				<a href="javascript:void(0)" class="closeBtn"> &times; </a>
-
-				<a href="/my-brand/">Home</a>
-				<a href="#">Portfolio</a>
-				<a href="about.html">About me</a>
-				<a href="blog/landing.html">Blog</a>
-				<a href="#">Contact me</a>
-			</nav>
-			<a href="/my-brand/">JN</a>
-			<span class="menuBtn"> &#9776; </span>
-		</header>
-		<header class="lg-screen">
-			<a href="/my-brand/">Juste Niyonteze</a>
-			<nav>
-				<a href="/my-brand/">Home</a>
-				<a href="#portfolio">Portfolio</a>
-				<a href="about.html">About me</a>
-				<a href="blog/landing.html">Blog</a>
-				<a href="#contact">Contact me</a>
-				<a href="login/login.html">Contact me</a>
-			</nav>
-		</header>
+		<header-component></header-component>
 		<main>
 			<img src="assets/img/profile.jpg" alt="My-face.jpg" />
 			<section class="my-story">

@@ -5,17 +5,6 @@ let posts = localStorage.getItem('posts')
 	? JSON.parse(localStorage.getItem('posts'))
 	: []
 
-const active = localStorage.getItem('active')
-
-if (active) {
-	const login = document.querySelector('button')
-	login.textContent = "logout"
-	login.addEventListener('click', function () {
-		localStorage.removeItem('active')
-		location.href = '/my-brand/'
-	})
-}
-
 const post = posts.find((post) => article.match(post.id))
 const postIndex = posts.findIndex((post) => article.match(post.id))
 
@@ -47,7 +36,7 @@ post.comments.forEach((comment) => {
 	content.appendChild(document.createTextNode(comment.comment))
 
 	const users = JSON.parse(localStorage.getItem('users'))
-	const user = users.find((element) => element.id.toString() === comment.user)
+	const user = users.find((element) => element.id.match(comment.user))
 	
 	const username = document.createElement('h4')
 	username.textContent = `${user.username}`

@@ -4,23 +4,35 @@ let arr = localStorage.getItem('users')
 	? JSON.parse(localStorage.getItem('users'))
 	: []
 
-const button = document.querySelector('button')
+	const id = localStorage.getItem('active')
 	
+	if(!id) {
+		location.href = 'signup.html'
+	}
+
+	const user = arr.find((user) => user.id.match(id))
+	const index = arr.findIndex((user) => user.id.match(id))
+	const button = document.getElementById('location')
+
 button.addEventListener('click', function() {
-    let signedUser = JSON.parse(localStorage.getItem('signed'))
-    
 	navigator.geolocation.getCurrentPosition(function(position) {
 		const latitude = position.coords.latitude
 		const longitude = position.coords.longitude
         
-		signedUser['location'] = {
-			"latitude": latitude, 
-			"longitude": longitude
+		arr[index] = {...user, 
+			"location": {
+				"latitude": latitude, 
+				"longitude": longitude
+			}
 		}
-
-        const index = arr.findIndex((user) => signedUser.username === user.username)
-        arr[index] = signedUser
-
+		localStorage.setItem('users', JSON.stringify(arr))
+		location.href = '/my-brand/blog/landing.html'
 	})    
-    localStorage.setItem('users', JSON.stringify(arr))
+})
+
+const homeBtn = document.getElementById('home')
+homeBtn.addEventListener('click', function(e) {
+	e.preventDefault()
+
+	location.href = '/my-brand/blog/landing.html'
 })

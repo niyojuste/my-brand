@@ -22,7 +22,7 @@ form.addEventListener('submit', function (e) {
 		return form.prepend(errorMessage)
 	}	
 
-	const id = new Date().getTime().toString()
+	const id = new Date().getTime().toFixed()
 	const name = document.querySelector("[name='name']").value
 	const username = document.querySelector("[name='username']").value
 	const password = document.querySelector("[name='password']").value
@@ -73,7 +73,7 @@ form.addEventListener('submit', function (e) {
 
 	arr.push(user)
 	localStorage.setItem('users', JSON.stringify(arr))
-	localStorage.setItem('signed', JSON.stringify(user))
+	localStorage.setItem('active', user.id)
 
 	location.href = 'location.html'
 })

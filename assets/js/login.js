@@ -1,3 +1,7 @@
+if(active) {
+	history.back()
+}
+
 let arr = localStorage.getItem('users')
 	? JSON.parse(localStorage.getItem('users'))
 	: []
