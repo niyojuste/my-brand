@@ -7,8 +7,8 @@ homeLink.href = '/my-brand/blog/landing.html'
 const nav = document.createElement('div')
 
 const active = localStorage.getItem('active')
-const allUsers = JSON.parse(localStorage.getItem('users'))
-const thisUser = allUsers.find((user) => user.id === active)
+const allUsers = getLocalArrayOf('users')
+const thisUser = getFrom(allUsers, active)
 
 const logBtn = document.createElement('button')
 
@@ -60,6 +60,7 @@ if(location.href.includes('/my-brand/blog/')) {
     if(active) {
         logBtn.textContent = `${thisUser.username}`
         logBtn.addEventListener('click', function() {
+            localStorage.removeItem('active')
             location.href = '/my-brand/login/login.html'
         })
         nav.insertAdjacentElement('beforeend', logBtn)
