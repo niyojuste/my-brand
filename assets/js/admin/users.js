@@ -1,6 +1,6 @@
-// let users = localStorage.getItem('users')
-// 	? JSON.parse(localStorage.getItem('users'))
-// 	: []
+let users = localStorage.getItem('users')
+	? JSON.parse(localStorage.getItem('users'))
+	: []
 
 const totalUsers = document.createElement('h3')
 totalUsers.appendChild(document.createTextNode(users.length))
@@ -18,15 +18,15 @@ users.forEach((user) => {
 	const tr = document.createElement('tr')
 	tr.appendChild(username)
 	tr.appendChild(name)
-    
+
 	if (user.location) {
 		const longitude = document.createElement('td')
 		longitude.appendChild(document.createTextNode(user.location.longitude))
 
 		const latitude = document.createElement('td')
 		latitude.appendChild(document.createTextNode(user.location.latitude))
-        tr.appendChild(longitude)
-        tr.appendChild(latitude)
+		tr.appendChild(longitude)
+		tr.appendChild(latitude)
 	}
 
 	const tbody = document.querySelector('tbody')

@@ -13,31 +13,31 @@ oldBody.value = post.body
 const form = document.querySelector('form')
 
 form.addEventListener('submit', function updatePost() {
-    const title = oldTitle.value
-    const body = oldBody.value
-    const time = new Date().getTime()
+	const title = oldTitle.value
+	const body = oldBody.value
+	const time = new Date().getTime()
 
-	post = {...post, title, body, time}
+	post = { ...post, title, body, time }
 
 	sessionStorage.setItem('post', JSON.stringify(post))
 
 	const index = posts.findIndex((element) => element.id.match(post.id))
 	posts[index] = post
 	localStorage.setItem('posts', JSON.stringify(posts))
-    // history.back()
+	history.back()
 
-    // const back = document.createElement('button')
-	// back.appendChild(document.createTextNode('Go back'))
-	// back.addEventListener('click', function () {
-	// 	history.back()
-	// })
+	const back = document.createElement('button')
+	back.appendChild(document.createTextNode('Go back'))
+	back.addEventListener('click', function () {
+		history.back()
+	})
 
-	// const message = document.createElement('p')
-	// message.appendChild(document.createTextNode('Updated'))
+	const message = document.createElement('p')
+	message.appendChild(document.createTextNode('Updated'))
 
-	// const section = document.createElement('section')
-    // section.className = 'card'
-	// section.innerHTML = ''
-	// section.appendChild(message)
-	// section.appendChild(back)
+	const section = document.createElement('section')
+	section.className = 'card'
+	section.innerHTML = ''
+	section.appendChild(message)
+	section.appendChild(back)
 })
