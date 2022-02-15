@@ -1,6 +1,4 @@
-let arr = localStorage.getItem('users')
-	? JSON.parse(localStorage.getItem('users'))
-	: []
+let users = getLocalArrayOf('users')
 
 const form = document.querySelector('form')
 const errorMessage = document.getElementById('errorMessage')
@@ -22,13 +20,13 @@ form.addEventListener('submit', function (e) {
 		return form.prepend(errorMessage)
 	}	
 
-	const id = new Date().getTime().toString()
+	const id = new Date().getTime().toFixed()
 	const name = document.querySelector("[name='name']").value
 	const username = document.querySelector("[name='username']").value
 	const password = document.querySelector("[name='password']").value
 	const passwordCheck = document.querySelector("[name='passwordCheck']").value
 
-	if (arr.find((user) => username === user.username)) {
+	if (users.find((user) => username === user.username)) {
 		errorMessage.innerHTML = '<strong>Username</strong> already exists'
 		return form.prepend(errorMessage)
 	}
@@ -71,9 +69,9 @@ form.addEventListener('submit', function (e) {
 		password,
 	}
 
-	arr.push(user)
-	localStorage.setItem('users', JSON.stringify(arr))
-	localStorage.setItem('signed', JSON.stringify(user))
+	users.push(user)
+	localStorage.setItem('users', JSON.stringify(users))
+	localStorage.setItem('active', user.id)
 
 	location.href = 'location.html'
 })

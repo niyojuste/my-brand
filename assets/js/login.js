@@ -1,6 +1,8 @@
-let arr = localStorage.getItem('users')
-	? JSON.parse(localStorage.getItem('users'))
-	: []
+if(active) {
+	history.back()
+}
+
+let users = getLocalArrayOf('users')
 
 const form = document.querySelector('form')
 const errorMessage = document.getElementById('errorMessage')
@@ -25,7 +27,7 @@ form.addEventListener('submit', function (event) {
 	const username = document.querySelector("[name='username']").value
 	const password = document.querySelector("[name='password']").value
 
-	const user = arr.find((user) => user.username === username)
+	const user = users.find((user) => user.username === username)
 	
 	if(!user) {
 		errorMessage.textContent = 'Username not found'
@@ -39,7 +41,7 @@ form.addEventListener('submit', function (event) {
 	
 	localStorage.setItem('active', user.id)
 	
-	if(user && user.username.match('Yusto')) {
+	if(user && user.id === users[0].id) {
 		return location.href = '/my-brand/admin/dashboard.html'
 	}
 	

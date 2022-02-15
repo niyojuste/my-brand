@@ -1,7 +1,7 @@
 const active = localStorage.getItem('active')
-const users = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : []
-const user = users.find((element) => active === element.id.toString())
+const users = getLocalArrayOf('users')
+const user = getFrom(users, active)
 
-if(!user.username.match('Yusto')) {
+if(!user.username.match(users[0].username)) {
     location.href = '/my-brand/login/login.html'
 }

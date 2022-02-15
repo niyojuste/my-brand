@@ -1,26 +1,37 @@
 // const urlParams = new URLSearchParams(location.search)
 // const username = urlParams.get('username')
-let arr = localStorage.getItem('users')
-	? JSON.parse(localStorage.getItem('users'))
-	: []
+let users = getLocalArrayOf('users')
 
-const button = document.querySelector('button')
-	
-button.addEventListener('click', function() {
-    let signedUser = JSON.parse(localStorage.getItem('signed'))
-    
-	navigator.geolocation.getCurrentPosition(function(position) {
+const id = localStorage.getItem('active')
+
+if (!id) {
+	location.href = 'signup.html'
+}
+
+const user = getFrom(users, id)
+const index = getIndexOf(users, id)
+const button = document.getElementById('location')
+
+button.addEventListener('click', function () {
+	navigator.geolocation.getCurrentPosition(function (position) {
 		const latitude = position.coords.latitude
 		const longitude = position.coords.longitude
-        
-		signedUser['location'] = {
-			"latitude": latitude, 
-			"longitude": longitude
+
+		users[index] = {
+			...user,
+			location: {
+				latitude: latitude,
+				longitude: longitude,
+			},
 		}
+		localStorage.setItem('users', JSON.stringify(users))
+		location.href = '/my-brand/blog/landing.html'
+	})
+})
 
-        const index = arr.findIndex((user) => signedUser.username === user.username)
-        arr[index] = signedUser
+const homeBtn = document.getElementById('home')
+homeBtn.addEventListener('click', function (e) {
+	e.preventDefault()
 
-	})    
-    localStorage.setItem('users', JSON.stringify(arr))
+	location.href = '/my-brand/blog/landing.html'
 })

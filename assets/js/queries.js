@@ -1,5 +1,4 @@
-const localQueries = localStorage.getItem('queries')
-let queries = localQueries ? JSON.parse(localQueries) : []
+let queries = getLocalArrayOf('queries')
 
 const form = document.querySelector('form')
 const errorMessage = document.getElementById('errorMessage')
