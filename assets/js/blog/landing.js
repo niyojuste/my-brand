@@ -9,92 +9,110 @@ const likeBlank =
 const likeFill =
 	'M5 22h-5v-12h5v12zm17.615-8.412c-.857-.115-.578-.734.031-.922.521-.16 1.354-.5 1.354-1.51 0-.672-.5-1.562-2.271-1.49-1.228.05-3.666-.198-4.979-.885.906-3.656.688-8.781-1.688-8.781-1.594 0-1.896 1.807-2.375 3.469-1.221 4.242-3.312 6.017-5.687 6.885v10.878c4.382.701 6.345 2.768 10.505 2.768 3.198 0 4.852-1.735 4.852-2.666 0-.335-.272-.573-.96-.626-.811-.062-.734-.812.031-.953 1.268-.234 1.826-.914 1.826-1.543 0-.529-.396-1.022-1.098-1.181-.837-.189-.664-.757.031-.812 1.133-.09 1.688-.764 1.688-1.41 0-.565-.424-1.109-1.26-1.221z'
 
-let posts = getLocalArrayOf('posts')
+const reqHeader = {
+	method: 'GET',
+	headers: {
+		'Content-type': 'application/json',
+		Accept: 'application/json',
+	},
+}
 
-posts.forEach((post) => {
-	const title = document.createElement('h2')
-	title.appendChild(document.createTextNode(post.title))
+fetch('https://juste-my-brand.herokuapp.com/api/posts', reqHeader)
+	.then((response) => response.json())
+	.then((posts) => {
+		posts.forEach((post) => {
+			const title = document.createElement('h2')
+			title.appendChild(document.createTextNode(post.title))
 
-	const header = document.createElement('header')
-	header.appendChild(title)
+			const header = document.createElement('header')
+			header.appendChild(title)
 
-	const body = document.createElement('p')
-	body.appendChild(document.createTextNode(post.body))
-	body.style.maxHeight = '6vh'
-	body.style.height = 'auto'
-	body.style.overflow = 'hidden'
-	body.style.whiteSpace = 'nowrap'
-	body.style.textOverflow = 'ellipsis'
+			const body = document.createElement('p')
+			body.appendChild(document.createTextNode(post.body))
+			body.style.maxHeight = '6vh'
+			body.style.height = 'auto'
+			body.style.overflow = 'hidden'
+			body.style.whiteSpace = 'nowrap'
+			body.style.textOverflow = 'ellipsis'
 
-	const article = document.createElement('article')
-	article.appendChild(title)
-	article.appendChild(body)
+			const article = document.createElement('article')
+			article.appendChild(title)
+			article.appendChild(body)
 
-	const likes = document.createElement('p')
-	likes.appendChild(document.createTextNode(post.likes.length))
-	likes.style.marginTop = '0'
+			const likes = document.createElement('p')
+			likes.appendChild(document.createTextNode(post.likes.length))
+			likes.style.marginTop = '0'
 
-	const comments = document.createElement('p')
-	comments.appendChild(document.createTextNode(post.comments.length))
-	comments.style.marginTop = '0'
+			const comments = document.createElement('p')
+			comments.appendChild(document.createTextNode(post.comments.length))
+			comments.style.marginTop = '0'
 
-	const reactionsDiv = document.createElement('div')
-	reactionsDiv.className = 'reactions'
-	reactionsDiv.id = `${post.id}`
-	reactionsDiv.appendChild(likes)
-	if (post.likes.includes(active)) {
-		likes.insertAdjacentHTML('beforebegin', likeFillSVG)
-	} else {
-		likes.insertAdjacentHTML('beforebegin', likeBlankSVG)
-	}
-
-	reactionsDiv.appendChild(comments)
-	comments.insertAdjacentHTML('beforebegin', commentSVG)
-
-	article.addEventListener('click', function () {
-		sessionStorage.setItem('article', post.id)
-		location.href = 'article.html'
-	})
-
-	const postDiv = document.createElement('div')
-	postDiv.className = 'post'
-	postDiv.appendChild(article)
-	postDiv.appendChild(reactionsDiv)
-	postDiv.style = `
-		height: 20vh;
-		margin-bottom: 2rem;
-	`
-
-	main.appendChild(postDiv)
-})
-
-const likeSVGs = document.querySelectorAll('.like')
-likeSVGs.forEach((svg) => {
-	svg.addEventListener('click', function (e) {
-		e.preventDefault()
-
-		const postId = svg.parentElement.id
-		const post = posts.find((element) => postId.match(element.id))
-		const postIndex = posts.findIndex((element) => postId.match(element.id))
-
-		if (active) {
-			if (svg.firstElementChild.getAttribute('d') === likeFill) {
-				const likeIndex = post.likes.findIndex((like) => like === active)
-				posts[postIndex].likes.splice(likeIndex, 1)
-
-				localStorage.setItem('posts', JSON.stringify(posts))
-
-				svg.nextElementSibling.textContent = posts[postIndex].likes.length
-				svg.firstElementChild.setAttribute('d', likeBlank)
-				return
-			} else if (svg.firstElementChild.getAttribute('d') === likeBlank) {
-				posts[postIndex].likes.push(active)
-
-				localStorage.setItem('posts', JSON.stringify(posts))
-
-				svg.firstElementChild.setAttribute('d', likeFill)
-				svg.nextElementSibling.textContent = posts[postIndex].likes.length
+			const reactionsDiv = document.createElement('div')
+			reactionsDiv.className = 'reactions'
+			reactionsDiv.id = `${post._id}`
+			reactionsDiv.appendChild(likes)
+			if (post.likes.includes(active)) {
+				likes.insertAdjacentHTML('beforebegin', likeFillSVG)
+			} else {
+				likes.insertAdjacentHTML('beforebegin', likeBlankSVG)
 			}
-		}
+
+			reactionsDiv.appendChild(comments)
+			comments.insertAdjacentHTML('beforebegin', commentSVG)
+
+			article.addEventListener('click', function () {
+				sessionStorage.setItem('article', post._id)
+				location.href = 'article.html'
+			})
+
+			const postDiv = document.createElement('div')
+			postDiv.className = 'post'
+			postDiv.appendChild(article)
+			postDiv.appendChild(reactionsDiv)
+			postDiv.style = `
+				height: 20vh;
+				margin-bottom: 2rem;
+			`
+
+			main.appendChild(postDiv)
+		})
+
+		const likeSVGs = document.querySelectorAll('.like')
+		likeSVGs.forEach((svg) => {
+			svg.addEventListener('click', function (e) {
+				e.preventDefault()
+
+				const postId = svg.parentElement.id
+				const post = posts.find((element) => postId.match(element.id))
+				const postIndex = posts.findIndex((element) =>
+					postId.match(element.id)
+				)
+
+				if (active) {
+					if (svg.firstElementChild.getAttribute('d') === likeFill) {
+						const likeIndex = post.likes.findIndex(
+							(like) => like === active
+						)
+						posts[postIndex].likes.splice(likeIndex, 1)
+
+						localStorage.setItem('posts', JSON.stringify(posts))
+
+						svg.nextElementSibling.textContent =
+							posts[postIndex].likes.length
+						svg.firstElementChild.setAttribute('d', likeBlank)
+						return
+					} else if (
+						svg.firstElementChild.getAttribute('d') === likeBlank
+					) {
+						posts[postIndex].likes.push(active)
+
+						localStorage.setItem('posts', JSON.stringify(posts))
+
+						svg.firstElementChild.setAttribute('d', likeFill)
+						svg.nextElementSibling.textContent =
+							posts[postIndex].likes.length
+					}
+				}
+			})
+		})
 	})
-})

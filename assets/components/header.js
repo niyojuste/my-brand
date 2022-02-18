@@ -1,14 +1,13 @@
-console.log(document.querySelector('button'))
-
 const homeLink = document.createElement('a')
 homeLink.textContent = 'Home'
 homeLink.href = '/my-brand/blog/landing.html'
 
 const nav = document.createElement('div')
 
-const active = localStorage.getItem('active')
-const allUsers = getLocalArrayOf('users')
-const thisUser = getFrom(allUsers, active)
+const logged = localStorage.getItem('active') ? JSON.parse(localStorage.getItem('active')) : ''
+const token = logged ? logged.token : ''
+const active = logged ? logged.user._id : ''
+const thisUser = logged ? logged.user : ''
 
 const logBtn = document.createElement('button')
 
@@ -48,12 +47,12 @@ if(location.href.includes('/my-brand/blog/')) {
     
     const about = document.createElement('a')
     about.textContent = 'About me'
-    about.href = location.href + 'about.html'
+    about.href = '/my-brand/about.html'
     nav.insertAdjacentElement('afterbegin', about)
     
     const services = document.createElement('a')
     services.textContent = 'Services'
-    services.href = location.href + '#services'
+    services.href = '/my-brand/#services'
     nav.insertAdjacentElement('afterbegin', services)
     
     
@@ -71,7 +70,12 @@ nav.insertAdjacentElement('afterbegin', homeLink)
 
 const rootLink = document.createElement('a')
 rootLink.textContent = 'JN'
-rootLink.href = '/my-brand/'
+
+if(thisUser.role === 'admin') {
+    rootLink.href = '/my-brand/admin/dashboard.html'
+} else {
+    rootLink.href = '/my-brand/'
+}
 
 const header = document.createElement('header')
 header.className = 'lg-screen'

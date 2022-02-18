@@ -1,27 +1,44 @@
-let queries = localStorage.getItem('queries') ? JSON.parse(localStorage.getItem('queries')) : []
+const reqHeader = {
+	method: 'GET',
+	headers: {
+		Accept: 'application/json',
+		Authorization: `Bearer ${token}`,
+	},
+}
 
-const totalQueries = document.createElement('h3')
-totalQueries.appendChild(document.createTextNode(queries.length))
+fetch('https://juste-my-brand.herokuapp.com/api/queries', reqHeader)
+	.then((response) => response.json())
+	.then((queries) => {
+		const totalQueries = document.createElement('h3')
+		totalQueries.appendChild(document.createTextNode(queries.length))
 
-const queriesDisplay = document.getElementById('queries')
-queriesDisplay.appendChild(totalQueries)
+		const total = document.createElement('p')
+		total.appendChild(document.createTextNode('Queries'))
 
-queries.forEach((query) => {
+		const queriesDisplay = document.getElementById('queries')
+		queriesDisplay.appendChild(totalQueries)
+		queriesDisplay.appendChild(total)
 
-    const date = document.createElement('td')
-    date.appendChild(document.createTextNode(query.date))
+		queries.forEach((query) => {
+			const name = document.createElement('td')
+			name.appendChild(document.createTextNode(query.name))
 
-    const user = document.createElement('td')
-    user.appendChild(document.createTextNode(query.user.email))
+			const email = document.createElement('td')
+			email.appendChild(document.createTextNode(query.email))
 
-    const content = document.createElement('td')
-    content.appendChild(document.createTextNode(query.query))
-    
-    const tr =  document.createElement('tr')    
-    tr.appendChild(content)
-    tr.appendChild(user)
-    tr.appendChild(date)
-    
-    const tbody = document.querySelector('tbody')
-    tbody.appendChild(tr)
-});
+			const tel = document.createElement('td')
+			tel.appendChild(document.createTextNode(query.tel))
+
+			const content = document.createElement('td')
+			content.appendChild(document.createTextNode(query.query))
+
+			const tr = document.createElement('tr')
+			tr.appendChild(content)
+			tr.appendChild(name)
+			tr.appendChild(email)
+			tr.appendChild(tel)
+
+			const tbody = document.querySelector('tbody')
+			tbody.appendChild(tr)
+		})
+	})

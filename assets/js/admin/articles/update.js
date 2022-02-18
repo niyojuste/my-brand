@@ -1,43 +1,76 @@
-let posts = localStorage.getItem('posts')
-	? JSON.parse(localStorage.getItem('posts'))
-	: []
-
-let post = JSON.parse(sessionStorage.getItem('post'))
+let article = sessionStorage.getItem('post')
 
 const oldTitle = document.querySelector("[name='title']")
 const oldBody = document.querySelector("[name='body']")
 
-oldTitle.value = post.title
-oldBody.value = post.body
+const reqHeader = {
+	method: 'GET',
+	headers: {
+		Accept: 'application/json',
+	},
+}
 
-const form = document.querySelector('form')
+fetch(`https://juste-my-brand.herokuapp.com/api/posts/${article}`, reqHeader)
+	.then((response) => response.json())
+	.then((post) => {
+		oldTitle.value = post.title
+		oldBody.value = post.body
 
-form.addEventListener('submit', function updatePost() {
-	const title = oldTitle.value
-	const body = oldBody.value
-	const time = new Date().getTime()
+		const form = document.querySelector('form')
 
-	post = { ...post, title, body, time }
+		form.addEventListener('submit', (e) => {
+			e.preventDefault()
 
-	sessionStorage.setItem('post', JSON.stringify(post))
+			const title = oldTitle.value
+			const body = oldBody.value
+			const image = document.querySelector("[name='image']")
 
-	const index = posts.findIndex((element) => element.id.match(post.id))
-	posts[index] = post
-	localStorage.setItem('posts', JSON.stringify(posts))
-	history.back()
+			function updatePost(image) {
+				const updateHeader = {
+					method: 'PATCH',
+					headers: {
+						'Content-type': 'application/json',
+						Accept: 'application/json',
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify({ title, body, image }),
+				}
 
-	const back = document.createElement('button')
-	back.appendChild(document.createTextNode('Go back'))
-	back.addEventListener('click', function () {
-		history.back()
+				fetch(
+					`https://juste-my-brand.herokuapp.com/api/posts/${article}`,
+					updateHeader
+				)
+					.then((response) => response.json())
+					.then((result) => {
+						history.back()
+
+						// const back = document.createElement('button')
+						// back.appendChild(document.createTextNode('Go back'))
+						// back.addEventListener('click', function () {
+						// 	history.back()
+						// })
+
+						const message = document.createElement('p')
+						message.appendChild(
+							document.createTextNode(JSON.stringify(result))
+						)
+
+						const section = document.createElement('section')
+						section.className = 'card'
+						section.innerHTML = ''
+						section.appendChild(message)
+						// section.appendChild(back)
+					})
+			}
+
+			if (image.files[0]) {
+				const fileReader = new FileReader()
+				fileReader.readAsDataURL(image.files[0])
+				fileReader.addEventListener('loadend', (e) => {
+					updatePost(e.target.result)
+				})
+			} else {
+				updatePost()
+			}
+		})
 	})
-
-	const message = document.createElement('p')
-	message.appendChild(document.createTextNode('Updated'))
-
-	const section = document.createElement('section')
-	section.className = 'card'
-	section.innerHTML = ''
-	section.appendChild(message)
-	section.appendChild(back)
-})

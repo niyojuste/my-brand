@@ -18,10 +18,10 @@ form.addEventListener('submit', function (e) {
 	if (inputs.every((input) => !input.value)) {
 		errorMessage.innerHTML = '<strong>Type something</strong>'
 		return form.prepend(errorMessage)
-	}	
+	}
 
-	const id = new Date().getTime().toFixed()
 	const name = document.querySelector("[name='name']").value
+	const email = document.querySelector("[name='email']").value
 	const username = document.querySelector("[name='username']").value
 	const password = document.querySelector("[name='password']").value
 	const passwordCheck = document.querySelector("[name='passwordCheck']").value
@@ -47,6 +47,11 @@ form.addEventListener('submit', function (e) {
 		return form.prepend(errorMessage)
 	}
 
+	if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+		errorMessage.innerHTML = '<strong>Email</strong> seems to be invalid'
+		return form.prepend(errorMessage)
+	}
+
 	inputs.filter((input) => (input.value = input.value.trim()))
 
 	let empties = []
@@ -63,15 +68,27 @@ form.addEventListener('submit', function (e) {
 	}
 
 	const user = {
-		id,
 		name: name.trim(),
+		email: email.trim(),
 		username: username.trim(),
 		password,
 	}
 
-	users.push(user)
-	localStorage.setItem('users', JSON.stringify(users))
-	localStorage.setItem('active', user.id)
+	const header = {
+		method: 'POST',
+		headers: {
+			'content-type': 'application/json',
+			Accept: 'application/json',
+		},
+		body: JSON.stringify(user),
+	}
 
-	location.href = 'location.html'
+	fetch('https://juste-my-brand.herokuapp.com/api/users', header)
+		.then((response) => response.json())
+		.then((data) => console.log(data))
+	// users.push(user)
+	// localStorage.setItem('users', JSON.stringify(users))
+	// localStorage.setItem('active', user.id)
+
+	// location.href = 'location.html'
 })
