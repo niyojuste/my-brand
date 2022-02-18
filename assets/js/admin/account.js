@@ -1,7 +1,7 @@
-const active = localStorage.getItem('active')
-const users = getLocalArrayOf('users')
-const user = getFrom(users, active)
+const admin = localStorage.getItem('active') ? JSON.parse(localStorage.getItem('active')) : ''
 
-if(!user.username.match(users[0].username)) {
+if(!admin.user.role) {
     location.href = '/my-brand/login/login.html'
 }
+
+const token = admin.token

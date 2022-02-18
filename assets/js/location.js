@@ -1,15 +1,13 @@
-// const urlParams = new URLSearchParams(location.search)
-// const username = urlParams.get('username')
-let users = getLocalArrayOf('users')
+const logged = localStorage.getItem('active')
+	? JSON.parse(localStorage.getItem('active'))
+	: ''
+const token = logged ? logged.token : ''
+const active = logged ? logged.user._id : ''
 
-const id = localStorage.getItem('active')
-
-if (!id) {
+if (!active) {
 	location.href = 'signup.html'
 }
 
-const user = getFrom(users, id)
-const index = getIndexOf(users, id)
 const button = document.getElementById('location')
 
 button.addEventListener('click', function () {
@@ -17,15 +15,27 @@ button.addEventListener('click', function () {
 		const latitude = position.coords.latitude
 		const longitude = position.coords.longitude
 
-		users[index] = {
-			...user,
-			location: {
-				latitude: latitude,
-				longitude: longitude,
-			},
+		const location = {
+			latitude,
+			longitude,
 		}
-		localStorage.setItem('users', JSON.stringify(users))
-		location.href = '/my-brand/blog/landing.html'
+
+		const locationHeader = {
+			method: 'PATCH',
+			headers: {
+				'Content-type': 'application/json',
+				Accept: 'application/json',
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify({ location }),
+		}
+
+		fetch(
+			`https://juste-my-brand.herokuapp.com/api/users/${active}`,
+			locationHeader
+		)
+			.then((response) => response.json())
+			.then((location.href = '/my-brand/blog/landing.html'))
 	})
 })
 

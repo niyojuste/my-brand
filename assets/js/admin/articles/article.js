@@ -1,47 +1,73 @@
-const post = JSON.parse(sessionStorage.getItem('post'))
-
-const title = document.createElement('h2')
-if (!post) {
-	title.appendChild(document.createTextNode('No article'))
-} else {
-	title.appendChild(document.createTextNode(post.title))
+const post = sessionStorage.getItem('post')
+const reqHeader = {
+	method: 'GET',
+	headers: {
+		Accept: 'application/json',
+		Authorization: `Bearer ${token}`,
+	},
 }
 
-const body = document.createElement('p')
-body.innerHTML = `${post.body.replaceAll('\n', '<br>')}`
+fetch(`https://juste-my-brand.herokuapp.com/api/posts/${post}`, reqHeader)
+	.then((response) => response.json())
+	.then((post) => {
+		const title = document.createElement('h2')
+		if (!post) {
+			title.appendChild(document.createTextNode('No article'))
+		} else {
+			title.appendChild(document.createTextNode(post.title))
+		}
 
-const content = document.getElementById('post')
-content.appendChild(title)
-content.appendChild(body)
+		const body = document.createElement('p')
+		body.innerHTML = `${post.body.replaceAll('\n', '<br>')}`
 
-const likes = document.createElement('h3')
-likes.appendChild(document.createTextNode(post.likes.length))
+		const image = document.createElement('img')
+		image.src = post.image
+		const picture = document.createElement('picture')
+		picture.appendChild(image)
 
-const comments = document.createElement('h3')
-comments.appendChild(document.createTextNode(post.comments.length))
+		const content = document.getElementById('post')
+		content.appendChild(title)
+		content.appendChild(picture)
+		content.appendChild(body)
 
-const reactions = document.getElementById('reactions')
-reactions.appendChild(likes)
-reactions.appendChild(comments)
+		const likesCount = document.createElement('h3')
+		likesCount.appendChild(document.createTextNode(post.likes.length))
+		const likes = document.createElement('p')
+		likes.appendChild(document.createTextNode('Likes'))
 
-function deletePost() {
-	let posts = JSON.parse(localStorage.getItem('posts'))
-	posts = posts.filter((element) => element.id !== post.id)
-	localStorage.setItem('posts', JSON.stringify(posts))
-	sessionStorage.removeItem('post')
+		const commentsCount = document.createElement('h3')
+		commentsCount.appendChild(document.createTextNode(post.comments.length))
+		const comments = document.createElement('p')
+		comments.appendChild(document.createTextNode('Comments'))
 
-	const back = document.createElement('button')
-	back.appendChild(document.createTextNode('Go back'))
-	back.addEventListener('click', function () {
-		history.back()
+		const reactions = document.getElementById('reactions')
+		reactions.appendChild(likesCount)
+		reactions.appendChild(likes)
+		reactions.appendChild(commentsCount)
+		reactions.appendChild(comments)
 	})
 
-	const message = document.createElement('p')
-	message.appendChild(document.createTextNode('Deleted'))
+function deletePost() {
+	reqHeader.method = 'DELETE'
 
-	const section = document.querySelector('section')
-	section.className = 'card'
-	section.innerHTML = ''
-	section.appendChild(message)
-	section.appendChild(back)
+	fetch(`https://juste-my-brand.herokuapp.com/api/posts/${post}`, reqHeader)
+		.then((response) => response.json())
+		.then((result) => {
+			sessionStorage.removeItem('post')
+
+			const back = document.createElement('button')
+			back.appendChild(document.createTextNode('Back'))
+			back.addEventListener('click', function () {
+				history.back()
+			})
+
+			const message = document.createElement('p')
+			message.appendChild(document.createTextNode(result.message))
+
+			const section = document.querySelector('section')
+			section.className = 'card'
+			section.innerHTML = ''
+			section.appendChild(message)
+			section.appendChild(back)
+		})
 }
